@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import com.start.student.Student;
+import com.start.student.StudentDao;
 
 public class Start {
 
@@ -31,12 +32,29 @@ public class Start {
 				
 				Student st = new Student(name,phone,city);
 				System.out.println(st);
+				
+				boolean answer = StudentDao.addStudentToDB(st);
+				if(answer) {
+					System.out.println("Student added successfully");
+				}else {
+					System.out.println("There is some problem ");
+				}
 			}
 			else if (choice == 2) {
 				//delete student
+				System.out.println("Enter student id to delete: ");
+				int studentId = Integer.parseInt(br.readLine());
+				
+				boolean answer = StudentDao.deleteStudent(studentId);
+				if(answer) {
+					System.out.println("Student deleted successfully ");
+				}else {
+					System.out.println("There is some problem please contact to admin ");
+				}
 			}
 			else if (choice == 3) {
 				//display student
+				StudentDao.getAllStudent();
 			}
 			else if (choice == 4) {
 				//exit menu
