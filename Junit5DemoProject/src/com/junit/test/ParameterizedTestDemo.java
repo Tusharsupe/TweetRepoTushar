@@ -1,6 +1,7 @@
 package com.junit.test;
 
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -35,5 +36,13 @@ public class ParameterizedTestDemo {
 	@MethodSource("cars")
 	public void methodSourceTest(String cars) {
 		System.out.println(cars);
+	}
+	
+	//Csv source
+	
+	@ParameterizedTest
+	@CsvSource({"Nishant","Tushar","Raghav","Pratik"})
+	public void csvSourceTest(String name) {
+		System.out.println(name);
 	}
 }
